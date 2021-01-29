@@ -1,13 +1,19 @@
 const mongoose = require('mongoose')
-let Schema = mongoose.Schema
+const Schema = mongoose.Schema
 
-let ContactSchema = new Schema({
+const ContactSchema = new Schema({
     userId: String,
     contactId: String,
-    status: { type: Boolean = false },
-    createdAt: { type: Number = Date.now },
-    updatedAt: { type: Number = null },
-    deletedAt: { type: Number = null }
+    status: { type: Boolean, default: false },
+    createdAt: { type: Number, default: Date.now },
+    updatedAt: { type: Number, default: null },
+    deletedAt: { type: Number, default: null }
 })
+
+ContactSchema.statics = {
+    createNew(item) {
+        return this.create(item)
+    }
+}
 
 module.exports = mongoose.model("Contact", ContactSchema)

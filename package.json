@@ -5,12 +5,14 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "babel-node src/server.js"
+        "start": "babel-node src/server.js",
+        "mongo-win": "\"C:/Users/muath/mongodb/bin/mongod.exe\" --dbpath=/Users/muath/mongodb-data"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "bluebird": "^3.7.2",
         "express": "^4.17.1",
         "mongoose": "^4.13.9"
     },
