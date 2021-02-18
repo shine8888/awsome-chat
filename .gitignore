@@ -1,3 +1,5 @@
 node_modules
 
 config/dev.env
+
+src/public/bower_components
