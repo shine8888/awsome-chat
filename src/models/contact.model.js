@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
-const ContactSchema = new Schema({
+const ContactSchema = new mongoose.Schema({
     userId: String,
     contactId: String,
     status: { type: Boolean, default: false },
