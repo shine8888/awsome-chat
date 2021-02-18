@@ -1,20 +1,21 @@
  const express = require("express")
  const ConnectDB = require("./config/connectDB")
- const ContactModel = require("./models/contact.model")
+     //  const ContactModel = require("./models/contact.model")
+ const configViewEngine = require('./config/viewEngine')
+     // Init app
  let app = express()
+     //Connect DB
  ConnectDB.connectDB()
 
- app.get('/testDB', async(req, res) => {
-     try {
-         let item = {
-             userId: "2234324",
-             contactId: "1234242423433"
-         }
-         let contact = await ContactModel.createNew(item)
-         res.send(contact)
-     } catch (error) {
-         console.log(error)
-     }
+ // Config view engine
+ configViewEngine.configViewEngine(app)
+
+ app.get('/', (req, res) => {
+     return res.render('main/master')
+ })
+
+ app.get('/login-register', (req, res) => {
+     return res.render('auth/loginRegister')
  })
 
  app.listen(process.env.PORT, process.env.HOSTNAME, () => {
