@@ -1,8 +1,8 @@
  const express = require("express")
  const ConnectDB = require("./config/connectDB")
  const initRoutes = require('./routes/web')
-     //  const ContactModel = require("./models/contact.model")
  const configViewEngine = require('./config/viewEngine')
+ const bodyParser = require('body-parser')
      // Init app
  let app = express()
      //Connect DB
@@ -10,6 +10,9 @@
 
  // Config view engine
  configViewEngine.configViewEngine(app)
+
+ // Enable post data for request
+ app.use(bodyParser.urlencoded({ extended: true }))
 
  // init all routes
  initRoutes.initRoutes(app)
